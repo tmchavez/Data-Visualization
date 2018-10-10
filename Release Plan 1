@@ -1,0 +1,45 @@
+Release Plan
+
+Product Name: Data Visualization
+Team Name: X Force
+Release Name: Running Interface
+Release Date: 10/09/18
+Revision Number: 1
+Revision Date: 10/09/18
+
+High Level Goals:
+The top-level goals for this release is to set up a running and interactive platform that will be able to graph data sets. We plan to test our prototype and have continuous integration throughout the sprint.
+
+User Stories for Release:
+
+User 1: (1st priority)
+As a team member, I want to create a running and interactive platform to be the base of our project.
+User 2: (2nd priority)
+As a team member, I want to be able to create an interactive feature that will allow users to input their data.
+User 3: (3rd priority)
+As a team member, I want to create a display that will plot the users’ dataset. 
+
+Product Backlog:
+
+Have a running and successful interface
+Include a prediction algorithm
+Have audio playback experience
+Have a visual playback experience
+Have customizable search options
+Make it user friendly
+Include an analyzation of data / statistics of data
+Have zooming features with the graph
+Have different graph options (i.e. histogram, bar graph, etc.)
+Have good data visualization
+Include an option to import excel sheets into data text box
+Use websites for database selection
+Comparison options(analyze multiple data sets side by side)
+
+Project Presentation: https://docs.google.com/presentation/d/1csJVpn48pCEaGN3nyI7u4KtVxlF2WGkf0seve34V86Y/edit?usp=sharing
+
+Sprint 1:
+- create a basic interface in html/css
+- create a basic back end to prep data for plotting in python
+- get a working graph to represent input data
+- get a basic search function that will allow the user to highlight any point of data
+
