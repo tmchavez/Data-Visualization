@@ -1,9 +1,21 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <script src="../node_modules/tone/build/Tone.min.js"></script>
+  <script src="../jquery-3.3.1.min.js"></script>
   <script src="osc.js"></script>
+  <style>
+    input[type=checkbox] {
+      transform: scale(2);
+    }
+  </style>
 </head>
 <body>
   <h1> ASCENDING OSC <h1>
+  <div class="button-holder">
+      <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input>
+      <br>
+      <input type="checkbox" id="toggle-dir" name="direction" onclick=toggleDir();>checked = up, no check = down</input>
+  </div>
 </body>
 </html>
