@@ -1,14 +1,10 @@
 var direction = "down";
-var freq = [440, 440, 440];
 var osc = [];
 
 var shepLength = 8;
 
 function togglePlay(){
   if($('#toggle-play').is(':checked')){
-    for(let e in freq){
-      freq[e] = 440;
-    }
     Tone.Transport.stop();
     for(v in osc){
       osc[v].start();
@@ -73,6 +69,7 @@ function updateTime(){
             v.rampTo(-Infinity, shepLength);
         }else if(f.value == 1760){
             f.value = 110;
+            v.value = -Infinity;
         }
      }
    }else{
@@ -93,6 +90,7 @@ function updateTime(){
             v.rampTo(-Infinity, shepLength);
         }else if(f.value == 110){
             f.value = 1760;
+            v.value = -Infinity;
         }
      }
    }
