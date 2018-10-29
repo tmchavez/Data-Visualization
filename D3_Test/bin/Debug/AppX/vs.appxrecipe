@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>LAPTOP-5PUO81Q6</Machine>
+    <WindowsUser>jakes</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>14972d7c-0860-46dd-9db9-1bf9903e01a3</PackageIdentityName>
+    <PackageIdentityPublisher>CN=jakes</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\jakes\source\repos\D3_Test\D3_Test\bld\Debug\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>
+    </WindowsSdkPath>
+    <LayoutDir>C:\Users\jakes\source\repos\D3_Test\D3_Test\bin\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>354CEDBE6459B54C843A56C758F3A6F77318B782E368675883B1F2B0BF00D898</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>14972d7c-0860-46dd-9db9-1bf9903e01a3_1.0.0.0_neutral__z1n7ye1cskyb6</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>14972d7c-0860-46dd-9db9-1bf9903e01a3_z1n7ye1cskyb6!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>14972d7c-0860-46dd-9db9-1bf9903e01a3</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=jakes</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-10-22T03:08:15.471</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\index.html">
+      <PackagePath>index.html</PackagePath>
+      <Modified>2018-10-22T05:11:16.768</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\images\LockScreenLogo.scale-200.png">
+      <PackagePath>images\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2018-09-20T04:49:01.165</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\images\SplashScreen.scale-200.png">
+      <PackagePath>images\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-09-20T04:49:01.165</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\images\Square150x150Logo.scale-200.png">
+      <PackagePath>images\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-09-20T04:49:01.165</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\images\Square44x44Logo.scale-200.png">
+      <PackagePath>images\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-09-20T04:49:01.165</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\images\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>images\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-09-20T04:49:01.165</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\images\StoreLogo.png">
+      <PackagePath>images\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-09-20T04:49:01.165</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\images\Wide310x150Logo.scale-200.png">
+      <PackagePath>images\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-09-20T04:49:01.165</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\js\main.js">
+      <PackagePath>js\main.js</PackagePath>
+      <Modified>2018-10-22T05:09:43.947</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\css\default.css">
+      <PackagePath>css\default.css</PackagePath>
+      <Modified>2018-10-22T04:58:27.981</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jakes\source\repos\D3_Test\D3_Test\bin\Debug\ReverseMap\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-10-22T03:08:14.821</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
