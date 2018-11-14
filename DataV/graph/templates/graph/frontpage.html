@@ -8,15 +8,23 @@
 		<center><button type="button" class="btn btn-primary btn-lg">Enter</button>
 		<button type="button" class="btn btn-secondary btn-lg">Graph</button>
 		</center>
-		<script src="{% static 'graph/dataReader.js' %}"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<!-- <script src="{% static 'graph/tone/dataReader.js' %}"></script> -->
+   	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
 	<div class="button-holder">
       <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input>
       <br>
       <input type="checkbox" id="toggle-dir" name="direction" onclick=toggleDir();>checked = up, no check = down</input>
-  </div> 
+  </div>
+
+
+
+   <div class="chart"></div>
+	<script>
+		makechart();
+	</script>
+
 
 
 {% endblock content %}
