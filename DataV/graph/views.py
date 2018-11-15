@@ -11,4 +11,4 @@ def double(request):
   return render(request, 'graph/double.html')
 
 def result(request):
-  return HttpResponse('<h1> graph results </h1>')
+  return render(request, 'graph/results.html')

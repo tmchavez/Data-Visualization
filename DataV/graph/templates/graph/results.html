@@ -1,0 +1,18 @@
+{% extends "graph/base.html" %}
+{% load static %}
+{%block content %}
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+  <div class="button-holder">
+    <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input>
+    <br>
+    <input type="checkbox" id="toggle-dir" name="direction" onclick=toggleDir();>checked = up, no check = down</input>
+  </div>
+
+
+  <link rel="stylesheet" href="{% static 'graph/d3/default.css' %}">
+  <div class="chart"></div>
+
+{% endblock content %}
