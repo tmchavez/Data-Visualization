@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html>
+	<head>
+
+        <script src="{% static 'graph/tone/node_modules/tone/build/Tone.min.js' %}"></script>
+        <script src="{% static 'graph/tone/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'graph/tone/osc.js' %}"></script>
+			  <link rel="stylesheet" href="{% static 'graph/d3/default.css' %}">	
+
+
+
+        <title>Data Visualization</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	</head>
+	<body class="body">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="about.html">Data Visualization by X Force</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'graph-home' %}">Single Axis Graph <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'graph-double' %}">Double Axis Graph</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+	{% block content %}{% endblock %}
+
+
+	</body>
+</html>

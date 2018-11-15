@@ -7,5 +7,8 @@ from django.http import HttpResponse
 def home(request):
   return render(request, 'graph/frontpage.html')
 
+def double(request):
+  return render(request, 'graph/double.html')
+
 def result(request):
   return HttpResponse('<h1> graph results </h1>')
