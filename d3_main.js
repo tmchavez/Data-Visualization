@@ -1,14 +1,23 @@
-﻿// Your code here!
-var data = [1, 2, 4, 4.5, 6, 8];
-var new_data = [2, 4, 2, 6, 3.5, 9];
+﻿/* Main JavaScript for D3 Vizualization */
 
-//var x_name = 'X Name'
-//var y_name = 'Y Name'
+function updateInput() {
+	var new_data = document.getElementById("points").value.split(" ");
+	for (var i = 0; i < new_data.length; i++) {
+		new_data[i] = parseFloat(new_data[i]);
+	}
+}
 
-var x = d3.scaleLinear().rangeRound([0, 530]);
-var y = d3.scaleLinear().rangeRound([350, 0]);
 
-function makechart() {
+function parse() {
+	var data = document.getElementById("points").value.split(" ");
+	for (var i = 0; i < data.length; i++) {
+		data[i] = parseFloat(data[i]);
+	}
+	line_chart(data);
+}
+
+
+function makechart(data) {
 	d3.select(".chart")
 		.selectAll("div")
 		.data(data)
@@ -17,7 +26,8 @@ function makechart() {
 		.text(function (d) { return d; });
 }
 
-function line_chart() {
+
+function line_chart(data) {
 	var svg_width = 600, svg_height = 400;
 	var margin = { top: 20, right: 20, bottom: 30, left: 50 };
 	var width = svg_width - margin.left - margin.right;
@@ -76,16 +86,4 @@ function line_chart() {
 			i = d3.interpolateString("0," + l, l + "," + l);
 		return function (t) { return i(t); };
 	}
-}
-
-var valueline = d3.line()
-	.x(function (d) { return x(new_data.indexOf(d)) })
-	.y(function (d) { return y(d) });
-
-function reAnimate() {
-	var svg = d3.select("svg").transition();
-
-	svg.select(".line")
-		.duration(7500)
-		.attr("d", valueline(new_data));
 }
