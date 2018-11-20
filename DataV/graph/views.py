@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import dataO
 from django.contrib.auth.models import User
+from django.core import serializers
 
 # Create your views here.
 
@@ -28,4 +29,8 @@ def double(request):
   return render(request, 'graph/double.html')
 
 def result(request):
-  return render(request, 'graph/results.html')
+  json_serializer = serializers.get_serializer("json")()
+  context = {
+    'datasets' : json_serializer.serialize(dataO.objects.all(), ensure_ascii=False)
+  }
+  return render(request, 'graph/results.html',context)
