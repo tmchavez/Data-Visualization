@@ -1,6 +1,6 @@
 var direction = "down";
 var freq = 440;
-var currentSec = 0;
+var arr = [0];
 
 function togglePlay(){
   if($('#toggle-play').is(':checked')){
@@ -14,16 +14,13 @@ function togglePlay(){
   }
 }
 
-function playSeries(arr){
-  for(var i=0; i<arr.length; i++){
-    Tone.Transport.schedule(function(time){
-      osc.set({
-          "frequency" : arr[i]
-      });
-    }, i);
-  }
-  Tone.Transport.start();
+function playSeries(){
+  osc.set({
+      "frequency" : arr[0]
+  });
   osc.start();
+  Tone.Master.volume.rampTo(0, 0.1);
+  Tone.Transport.start();
 
 }
 
@@ -36,7 +33,10 @@ var osc = new Tone.Oscillator({
 function updateTime(){
 	requestAnimationFrame(updateTime);
 	//the time elapsed in seconds
-  currentSec = Math.floor(Tone.Transport.seconds);
+  var currentSec = Math.floor(Tone.Transport.seconds);
+  osc.set({
+      "frequency" : arr[currentSec]
+  });
 }
 updateTime();
 
@@ -47,8 +47,8 @@ $(function(){
 });
 
 function inputArray(){
-  var arr = $('#inputArray').val().split(" ");
+  arr = $('#inputArray').val().split(" ");
   console.log(arr);
   Tone.Transport.stop();
-  playSeries(arr);
+  playSeries();
 }
