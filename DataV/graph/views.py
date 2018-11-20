@@ -29,8 +29,8 @@ def double(request):
   return render(request, 'graph/double.html')
 
 def result(request):
-  json_serializer = serializers.get_serializer("json")()
+  #json_serializer = serializers.get_serializer("json")()
   context = {
-    'datasets' : json_serializer.serialize(dataO.objects.all(), ensure_ascii=False)
+    'datasets' : dataO.objects.all()
   }
   return render(request, 'graph/results.html',context)
