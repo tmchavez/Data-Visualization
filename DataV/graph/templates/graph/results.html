@@ -11,13 +11,13 @@
     <input type="checkbox" id="toggle-dir" name="direction" onclick=toggleDir();>checked = up, no check = down</input>
   </div>
 
-<div class = "dataloadin">
-  <p> hello </p>
-  {% for data1 in datasets %}
 
-    <p> hello {{ data1.title}} </p>
-  {% endfor %}
-</div>
+  <div class = "dataloadin">
+    {% for data1 in datasets %}
+      <p> {{ data1.title}} - {{data1.content}} </p>
+    {% endfor %}
+  </div>
+
 
   <link rel="stylesheet" href="{% static 'graph/d3/default.css' %}">
   <div class="chart">
