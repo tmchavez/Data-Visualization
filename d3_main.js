@@ -35,6 +35,14 @@ function updateInput(data) {
 	svg.select(".line")
 		.duration(2000)
 		.attr("d", line(data));
+
+	svg.select(".x_axis")
+		.duration(2000)
+		.call(d3.axisBottom(x));
+
+	svg.select(".y_axis")
+		.duration(2000)
+		.call(d3.axisLeft(y));
 }
 
 
@@ -75,12 +83,14 @@ function line_chart(data) {
 	y.domain(d3.extent(data, function (d) { return d }));
 
 	g.append("g")
+		.attr("class", "x_axis")
 		.attr("transform", "translate(0," + height + ")")
 		.call(d3.axisBottom(x))
 		.select(".domain")
 		.remove();
 
 	g.append("g")
+		.attr("class", "y_axis")
 		.call(d3.axisLeft(y))
 		.append("text")
 		.attr("fill", "#000")
