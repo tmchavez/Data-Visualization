@@ -2,6 +2,9 @@ var direction = "down";
 var freq = 440;
 var arrayPlay;
 
+var highFreq = 800;
+var lowFreq = 200;
+
 function togglePlay(){
   if($('#toggle-play').is(':checked')){
     freq = 440;
@@ -34,9 +37,23 @@ function clearSeries(){
 // }
 
 function initializeSeries(arr){
+  var toneArr = scaleArray(arr);
+
   arrayPlay = new Tone.Sequence(function(time, note){
       piano.triggerAttackRelease(note, "16n", time);
-  }, arr, "2n").start(0).stop(arr.length*2);
+  }, toneArr, "2n").start(0).stop(arr.length*2);
+}
+
+function scaleArray(arr){
+  var toneArr = arr;
+  var max = Math.max(...arr);
+  var min = Math.min(...arr);
+
+  for(var i = 0; i<arr.length; i++){
+      var percent = (arr[i] - min) / (max - min);
+      toneArr[i] = percent * (highFreq - lowFreq) + lowFreq;
+  }
+  return toneArr;
 }
 
 var piano = new Tone.PolySynth(4, Tone.Synth, {
