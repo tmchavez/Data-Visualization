@@ -36,7 +36,7 @@ function clearSeries(){
 function initializeSeries(arr){
   arrayPlay = new Tone.Sequence(function(time, note){
       piano.triggerAttackRelease(note, "16n", time);
-  }, arr, "4n").start(0).stop(arr.length);
+  }, arr, "2n").start(0).stop(arr.length*2);
 }
 
 var piano = new Tone.PolySynth(4, Tone.Synth, {
