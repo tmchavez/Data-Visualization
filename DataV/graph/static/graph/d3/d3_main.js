@@ -1,5 +1,7 @@
+/* Main JavaScript for D3 Vizualization */
+
 function updateInput() {
-	var new_data = document.getElementById("points").value.split(" ");
+	var new_data = document.getElementById("inputArray").value.split(" ");
 	for (var i = 0; i < new_data.length; i++) {
 		new_data[i] = parseFloat(new_data[i]);
 	}
@@ -7,11 +9,13 @@ function updateInput() {
 
 
 function parse() {
-	var data = document.getElementById("points").value.split(" ");
+	var data = document.getElementById("inputArray").value.split(" ");
 	for (var i = 0; i < data.length; i++) {
 		data[i] = parseFloat(data[i]);
 	}
 	line_chart(data);
+	initializeSeries(data);
+	playSeries(data);
 }
 
 
