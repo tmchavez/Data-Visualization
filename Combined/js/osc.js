@@ -34,7 +34,7 @@ function initializeSeries(arr){
   var toneArr = scaleArray(arr);
 
   arrayPlay = new Tone.Sequence(function(time, note){
-      piano.triggerAttackRelease(note, "32n", time);
+      boopTone.triggerAttackRelease(note, "32n", time);
   }, toneArr, "4n").start(0);
 
   arrayPlay.loop = 0;
@@ -55,7 +55,7 @@ function scaleArray(arr){
   return toneArr;
 }
 
-var piano = new Tone.PolySynth(4, Tone.Synth, {
+var boopTone = new Tone.PolySynth(4, Tone.Synth, {
     "volume" : -8,
     "oscillator" : {
       "partials" : [1, 2, 1],
@@ -63,6 +63,7 @@ var piano = new Tone.PolySynth(4, Tone.Synth, {
     "portamento" : 0.05
 }).toMaster()
 
+// var noiseTone = new Tone.NoiseSynth()
 
 $(function(){
   Tone.Master.volume.rampTo(-Infinity, 0.05);

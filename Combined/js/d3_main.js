@@ -47,7 +47,12 @@ function updateInput(data) {
 
 
 function parse() {
-	var data = document.getElementById("inputArray").value.split(" ");
+	var data = document.getElementById("inputArray").value;
+	console.log(data);
+	data = data.replace(/\s\s+/g, " ");
+	data = data.replace(/\s\B/g, "");
+	data = data.split(" ");
+	console.log(data);
 	for (var i = 0; i < data.length; i++) {
 		data[i] = parseFloat(data[i]);
 	}
