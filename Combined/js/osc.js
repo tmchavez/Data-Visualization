@@ -55,15 +55,70 @@ function scaleArray(arr){
   return toneArr;
 }
 
-var boopTone = new Tone.PolySynth(4, Tone.Synth, {
+var boopTone = new Tone.MonoSynth(4, Tone.Synth, {
     "volume" : -8,
     "oscillator" : {
-      "partials" : [1, 2, 1],
+      "type" : "sine",
+      "partials" : [1, 3, 5],
     },
     "portamento" : 0.05
-}).toMaster()
+}).toMaster();
 
-// var noiseTone = new Tone.NoiseSynth()
+function setSquare(){
+  boopTone.set({
+    "oscillator" : {
+      "type" : "square",
+    }
+  });
+}
+
+function setSine(){
+  boopTone.set({
+    "oscillator" : {
+      "type" : "sine",
+    }
+  });
+}
+
+function setSaw(){
+  boopTone.set({
+    "oscillator" : {
+      "type" : "sawtooth",
+    }
+  });
+}
+
+function setTriangle(){
+  boopTone.set({
+    "oscillator" : {
+      "type" : "triangle",
+    }
+  });
+}
+
+var bongTone = new Tone.MembraneSynth({
+			"pitchDecay" : 0.008,
+			"octaves" : 2,
+			"envelope" : {
+				"attack" : 0.0006,
+				"decay" : 0.5,
+				"sustain" : 0
+			}
+}).toMaster();
+
+var bellTone = new Tone.MetalSynth({
+      "harmonicity" : 20,
+      "resonance" : 800,
+      "modulationIndex" : 20,
+      "pitchDecay" : 0.1,
+      "oscillator" : {
+          "type" : "sine",
+      },
+      "envelope" : {
+        "decay" : 0.4,
+      },
+      "volume" : -8
+}).toMaster();
 
 $(function(){
   Tone.Master.volume.rampTo(-Infinity, 0.05);
