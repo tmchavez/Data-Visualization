@@ -277,6 +277,7 @@ function searchPoint() {
 	}
 
 	plotSearchPoint(x, y);
+	playNote();
 
 	console.log("y is " + y);
 }

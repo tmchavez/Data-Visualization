@@ -26,6 +26,10 @@ function playSeries(arr){
   console.log("playing");
 }
 
+function playNote(){
+    bellTone.triggerAttackRelease('C4', '8n');
+}
+
 function clearSeries(){
   arrayPlay.removeAll();
 }
