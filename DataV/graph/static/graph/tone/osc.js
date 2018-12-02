@@ -1,108 +1,125 @@
 var direction = "down";
-var osc = [];
+var freq = 440;
+var arrayPlay;
 
-var shepLength = 8;
+var highFreq = 800;
+var lowFreq = 200;
+
+Tone.Transport.bpm.value = 23;
 
 function togglePlay(){
   if($('#toggle-play').is(':checked')){
+    freq = 440;
     Tone.Transport.stop();
-    for(v in osc){
-      osc[v].start();
-    }
+    osc.start();
     Tone.Master.volume.rampTo(0, 0.1);
     Tone.Transport.start();
   }else{
-    Tone.Master.volume.rampTo(-Infinity, 0.1);
+    Tone.Master.volume.rampTo(-Infinity, 0.05);
   }
 }
 
-function toggleDir(){
-  if($('#toggle-dir').is(':checked')){
-    direction = "up";
-  }else{
-    direction = "down";
+function playSeries(arr){
+  Tone.Transport.stop();
+  Tone.Master.volume.rampTo(0, 0.1);
+  Tone.Transport.start('+0.1');
+  console.log("playing");
+}
+
+function clearSeries(){
+  arrayPlay.removeAll();
+}
+
+function initializeSeries(arr){
+  var toneArr = scaleArray(arr);
+
+  arrayPlay = new Tone.Sequence(function(time, note){
+      boopTone.triggerAttackRelease(note, "32n", time);
+  }, toneArr, "4n").start(0);
+
+  arrayPlay.loop = 0;
+
+  console.log("intialize done");
+  console.log(toneArr);
+}
+
+function scaleArray(arr){
+  var toneArr = arr;
+  var max = Math.max(...arr);
+  var min = Math.min(...arr);
+
+  for(var i = 0; i<arr.length; i++){
+      var percent = (arr[i] - min) / (max - min);
+      toneArr[i] = percent * (highFreq - lowFreq) + lowFreq;
   }
+  return toneArr;
 }
 
-var osc1 = new Tone.Oscillator({
-			"frequency" : 110,
-			"volume" : -Infinity,
-      "type" : "sine"
+var boopTone = new Tone.MonoSynth(4, Tone.Synth, {
+    "volume" : -8,
+    "oscillator" : {
+      "type" : "sine",
+      "partials" : [1, 3, 5],
+    },
+    "portamento" : 0.05
 }).toMaster();
 
-var osc2 = new Tone.Oscillator({
-			"frequency" : 220,
-			"volume" : -17,
-      "type" : "sine"
-}).toMaster();
-
-var osc3 = new Tone.Oscillator({
-			"frequency" : 440,
-			"volume" : -10,
-      "type" : "sine"
-}).toMaster();
-
-var osc4 = new Tone.Oscillator({
-      "frequency" : 880,
-      "volume" : -15,
-      "type" : "sine"
-}).toMaster();
-
-function updateTime(){
-	requestAnimationFrame(updateTime);
-
-   if(direction == "up"){
-     for(v in osc){
-        var f = osc[v].frequency;
-        var v = osc[v].volume;
-        if(f.value == 110){
-            f.rampTo(220, shepLength);
-            v.rampTo(-17, shepLength);
-        }else if(f.value == 220){
-            f.rampTo(440, shepLength);
-            v.rampTo(-10, shepLength);
-        }else if(f.value == 440){
-            f.rampTo(880, shepLength);
-            v.rampTo(-15, shepLength);
-        }else if(f.value == 880){
-            f.rampTo(1760, shepLength);
-            v.rampTo(-Infinity, shepLength);
-        }else if(f.value == 1760){
-            f.value = 110;
-            v.value = -Infinity;
-        }
-     }
-   }else{
-     for(v in osc){
-        var f = osc[v].frequency;
-        var v = osc[v].volume;
-        if(f.value == 1760){
-            f.rampTo(880, shepLength);
-            v.rampTo(-17, shepLength);
-        }else if(f.value == 880){
-            f.rampTo(440, shepLength);
-            v.rampTo(-10, shepLength);
-        }else if(f.value == 440){
-            f.rampTo(220, shepLength);
-            v.rampTo(-15, shepLength);
-        }else if(f.value == 220){
-            f.rampTo(110, shepLength);
-            v.rampTo(-Infinity, shepLength);
-        }else if(f.value == 110){
-            f.value = 1760;
-            v.value = -Infinity;
-        }
-     }
-   }
+function setSquare(){
+  boopTone.set({
+    "oscillator" : {
+      "type" : "square",
+    }
+  });
 }
-updateTime();
 
+function setSine(){
+  boopTone.set({
+    "oscillator" : {
+      "type" : "sine",
+    }
+  });
+}
 
+function setSaw(){
+  boopTone.set({
+    "oscillator" : {
+      "type" : "sawtooth",
+    }
+  });
+}
+
+function setTriangle(){
+  boopTone.set({
+    "oscillator" : {
+      "type" : "triangle",
+    }
+  });
+}
+
+var bongTone = new Tone.MembraneSynth({
+			"pitchDecay" : 0.008,
+			"octaves" : 2,
+			"envelope" : {
+				"attack" : 0.0006,
+				"decay" : 0.5,
+				"sustain" : 0
+			}
+}).toMaster();
+
+var bellTone = new Tone.MetalSynth({
+      "harmonicity" : 20,
+      "resonance" : 800,
+      "modulationIndex" : 20,
+      "pitchDecay" : 0.1,
+      "oscillator" : {
+          "type" : "sine",
+      },
+      "envelope" : {
+        "decay" : 0.4,
+      },
+      "volume" : -8
+}).toMaster();
 
 $(function(){
   Tone.Master.volume.rampTo(-Infinity, 0.05);
-  osc.push(osc1);
-  osc.push(osc2);
-  osc.push(osc3);
-  osc.push(osc4);
 });
