@@ -26,12 +26,17 @@
 	    <input size="40" type="text" id="inputArrayY" value="{{object.yaxis}}">
 
 	</div>
+	<div class="lineButtons">
 	<input name="inputButton" type="button" value="Input"
-		   onclick="parse()" />
-	<input name="updateButton" type="button" value="Update"
-		   onclick="newParse()" />
+		   onclick="parse()" id="submit" />
+  </div>
 	<div class="chart"></div>
 	<svg></svg>
+
+	<label>Search Point (x): </label>
+  <input size="40" type="text" id="xSearch">
+  <input name="inputSearch" type="button" value="inputSearch" onclick="searchPoint()"/>
+  <br><br>
 </body>
 
 {% endblock content %}
