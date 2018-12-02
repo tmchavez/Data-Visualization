@@ -6,42 +6,21 @@ var margin = { top: 20, right: 20, bottom: 30, left: 50 };
 var width = svg_width - margin.left - margin.right;
 var height = svg_height - margin.top - margin.bottom;
 
+// Scale for axises
 var x = d3.scaleLinear().rangeRound([0, width]);
 var y = d3.scaleLinear().rangeRound([height, 0]);
 
+// Holds data points
 var data = [];
 
-function updateInput(data) {
-	var x = d3.scaleLinear().rangeRound([0, width]);
-	var y = d3.scaleLinear().rangeRound([height, 0]);
-
-	var line = d3.line()
-		.x(function (d) { return x(data.indexOf(d)) })
-		.y(function (d) { return y(d) });
-
-	x.domain(d3.extent(data, function (d) { return data.indexOf(d) }));
-	y.domain(d3.extent(data, function (d) { return d }));
-
-	var svg = d3.select("body").transition();
-
-	svg.select(".line")
-		.duration(2000)
-		.attr("d", line(data));
-
-function updateInput() {
-	var new_data = document.getElementById("inputArray").value.split(" ");
-	for (var i = 0; i < new_data.length; i++) {
-		new_data[i] = parseFloat(new_data[i]);
-	}
-}
-
-	svg.select(".x_axis")
-		.duration(2000)
-		.call(d3.axisBottom(x));
-
-	svg.select(".y_axis")
-		.duration(2000)
-		.call(d3.axisLeft(y));
+// Creates a bar graph
+function makechart(data) {
+	d3.select(".chart")
+		.selectAll("div")
+		.datum(data)
+		.enter().append("div")
+		.style("width", function (d) { return x(d) + "px"; })
+		.text(function (d) { return d; });
 }
 
 // Parses input and graphs line chart when "Input" button is pressed
@@ -83,13 +62,34 @@ function parse() {
 	line_chart(data, name);
 	initializeSeries(yData);
 	playSeries(yData);
-	var data = document.getElementById("inputArray").value.split(" ");
-	for (var i = 0; i < data.length; i++) {
-		data[i] = parseFloat(data[i]);
-	}
-	line_chart(data);
-	initializeSeries(data);
-	playSeries(data);
+}
+
+
+// Updatas the values in the line graph
+function updateInput(data) {
+	var x = d3.scaleLinear().rangeRound([0, width]);
+	var y = d3.scaleLinear().rangeRound([height, 0]);
+
+	var line = d3.line()
+		.x(function (d) { return x(data.indexOf(d)) })
+		.y(function (d) { return y(d) });
+
+	x.domain(d3.extent(data, function (d) { return data.indexOf(d) }));
+	y.domain(d3.extent(data, function (d) { return d }));
+
+	var svg = d3.select("body").transition();
+
+	svg.select(".line")
+		.duration(2000)
+		.attr("d", line(data));
+
+	svg.select(".x_axis")
+		.duration(2000)
+		.call(d3.axisBottom(x));
+
+	svg.select(".y_axis")
+		.duration(2000)
+		.call(d3.axisLeft(y));
 }
 
 // Updates the current graph
@@ -113,19 +113,9 @@ function newParse() {
 
 		updateInput(xData, yData);
 		clearSeries();
-		initializeSeries(xData, yData);
-		playSeries(xData, yData);
+		initializeSeries(yData);
+		playSeries(yData);
 	}
-}
-
-// Creates a bar graph
-function makechart(data) {
-	d3.select(".chart")
-		.selectAll("div")
-		.datum(data)
-		.enter().append("div")
-		.style("width", function (d) { return x(d) + "px"; })
-		.text(function (d) { return d; });
 }
 
 // Creates a line graph
@@ -138,8 +128,8 @@ function line_chart(data, name) {
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	var line = d3.line()
-			.x(function (d) { return x(d.index) })
-			.y(function (d) { return y(d.value) });
+		.x(function (d) { return x(d.index) })
+		.y(function (d) { return y(d.value) });
 
 	x.domain(d3.extent(data, function (d) { return d.index }));
 	y.domain([0, d3.max(data, function (d) { return d.value })]);
@@ -148,8 +138,6 @@ function line_chart(data, name) {
 		.attr("class", "x_axis")
 		.call(d3.axisBottom(x))
 		.attr("transform", "translate(0," + height + ")")
-		.select(".domain")
-		.remove();
 
 	g.append("g")
 		.attr("class", "y_axis")
@@ -172,6 +160,17 @@ function line_chart(data, name) {
 		.attr("stroke-width", 1.5)
 		.attr("d", line)
 		.call(transition);
+
+	// Scatterplot (NOT WORKING CORRECTLY)
+	/*svg.selectAll("dot")
+		.data(data)
+		.enter()
+		.append("circle")
+		.attr("class", "dot")
+		.attr("r", 3.5)
+		.attr("cx", function (d) { return x(d.index) })
+		.attr("cy", function (d) { return y(d.value) });
+	*/
 
 	// Transition function for animating the line
 	function transition(path) {
@@ -226,48 +225,65 @@ function searchPoint() {
 
 	// Check if data array exists
 	var dataExists = (Array.isArray(data)) && data.length != 0;
-	if(!dataExists){
+	if (!dataExists) {
 		console.log("initalize array first");
 		return;
 	}
 
 	// Check if point is in data array
-	var xInGraph = (x >= data[0].index) && (x <= data[data.length-1].index);
-	if(!xInGraph){
+	var xInGraph = (x >= data[0].index) && (x <= data[data.length - 1].index);
+	if (!xInGraph) {
 		console.log("x is invalid");
 		return;
 	}
 
-	for(var i = 0; i<data.length; i++){
-		if(x == data[i].index){
-				y = data[i].value;
-				break;
+	for (var i = 0; i < data.length; i++) {
+		if (x == data[i].index) {
+			y = data[i].value;
+			break;
 		}
-		else if(x > data[i].index && x < data[i+1].index){
-				y = distanceAtYGivenX(x, data[i], data[i+1]);
-				break;
+		else if (x > data[i].index && x < data[i + 1].index) {
+			y = distanceAtYGivenX(x, data[i], data[i + 1]);
+			break;
 		}
 	}
 
 	plotSearchPoint(x, y);
 
-	console.log("y is "+y);
+	console.log("y is " + y);
 }
 
-function distanceAtYGivenX(x, point1, point2){
+function distanceAtYGivenX(x, point1, point2) {
 
-		var x1 = point1.index;
-		var y1 = point1.value;
-		var x2 = point2.index;
-		var y2 = point2.value;
+	var x1 = point1.index;
+	var y1 = point1.value;
+	var x2 = point2.index;
+	var y2 = point2.value;
 
-		var m = (y2 - y1) / (x2 - x1);
-		var b = y1 - m * x1;
+	var m = (y2 - y1) / (x2 - x1);
+	var b = y1 - m * x1;
 
-		return m * x + b;
+	return m * x + b;
 
 }
 
-function plotSearchPoint(x, y){
+function plotSearchPoint(xValue, yValue) {
+	var dot = [];
+	dot.push(
+		{
+			index: xValue,
+			value: yValue
+		});
 
+	d3.select("svg")
+		.selectAll("dot")
+		.data(dot)
+		.enter()
+		.append("circle")
+		.attr("class", "dot")
+		.attr("r", 3.5)
+		.attr("cx", function (d) { return x(d.index) })
+		.attr("cy", function (d) { return y(d.value) })
+		.attr("transform", "translate(" + margin.left + ","
+			+ margin.top + ")");
 }
