@@ -184,3 +184,8 @@ function line_chart(data, name) {
 		//*/
 	}
 }
+
+function searchPoint(){
+		var point = document.getElementById("xSearch").value;
+		console.log(line);
+}
