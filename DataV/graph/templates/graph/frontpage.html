@@ -17,10 +17,10 @@
 		</p>
 		<center>
 	
-		 <form method="post" enctype="multipart/form-data">
-        	<input type="file" name="files[]" multiple>
-       		 <input type="submit" value="Upload File" name="submit">
-   		 </form>
+		<div id="inputs" class="clearfix">
+    		<input type="file" id="files" name="files[]" multiple />
+		
+ 		</div>
 	
     <a href = "{% url 'graph-result'%}"> results </a>
 		</center>
