@@ -62,7 +62,7 @@ function parse() {
 			xData[i] = parseFloat(i);
 			yData[i] = parseFloat(yData[i]);
 		}
-	}
+	} else { return }
 
 	for (var i = 0; i < yData.length; i++) {
 		data.push(
@@ -71,6 +71,7 @@ function parse() {
 				value: yData[i]
 			});
 	}
+	data.sort(function (a, b) { return a.index - b.index });
 
 	line_chart(data, name);
 	initializeSeries(yData);
