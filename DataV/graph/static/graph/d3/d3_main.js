@@ -1,5 +1,6 @@
 /* Main JavaScript for D3 Vizualization */
 
+<<<<<<< HEAD
 // Static variables for svg attributes.
 var svg_width = 600, svg_height = 400;
 var margin = { top: 20, right: 20, bottom: 30, left: 50 };
@@ -27,6 +28,14 @@ function updateInput(data) {
 	svg.select(".line")
 		.duration(2000)
 		.attr("d", line(data));
+=======
+function updateInput() {
+	var new_data = document.getElementById("inputArray").value.split(" ");
+	for (var i = 0; i < new_data.length; i++) {
+		new_data[i] = parseFloat(new_data[i]);
+	}
+}
+>>>>>>> testing
 
 	svg.select(".x_axis")
 		.duration(2000)
@@ -39,6 +48,7 @@ function updateInput(data) {
 
 // Parses input and graphs line chart when "Input" button is pressed
 function parse() {
+<<<<<<< HEAD
 	var xData = document.getElementById("inputArrayX")
 		.value
 		.replace(/\s\s+/g, " ")
@@ -76,6 +86,15 @@ function parse() {
 	line_chart(data, name);
 	initializeSeries(yData);
 	playSeries(yData);
+=======
+	var data = document.getElementById("inputArray").value.split(" ");
+	for (var i = 0; i < data.length; i++) {
+		data[i] = parseFloat(data[i]);
+	}
+	line_chart(data);
+	initializeSeries(data);
+	playSeries(data);
+>>>>>>> testing
 }
 
 // Updates the current graph

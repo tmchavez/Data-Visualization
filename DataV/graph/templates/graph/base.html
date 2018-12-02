@@ -3,13 +3,7 @@
 <html>
 	<head>
 
-        <script src="{% static 'graph/tone/node_modules/tone/build/Tone.min.js' %}"></script>
-        <script src="{% static 'graph/tone/jquery-3.3.1.min.js' %}"></script>
-        <script src="{% static 'graph/tone/osc.js' %}"></script>
 
-
-				<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-				<script src="{% static 'graph/d3/d3_main.js' %}"></script>
 
 
         <title>Data Visualization</title>
@@ -26,12 +20,28 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'graph-home' %}">Single Axis Graph <span class="sr-only"></span></a>
+
+    {% if user.is_authenticated %}
+			<li class="nav-item active">
+        <a class="nav-link" href="{% url 'graph-home' %}"> Home Page <span class="sr-only"></span></a>
+      </li>
+			<li class="nav-item active">
+        <a class="nav-link" href="{% url 'graph-create' %}"> Add Data </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'graph-double' %}">Double Axis Graph</a>
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
       </li>
+			<li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}">profile</a>
+      </li>
+    {% else %}
+		<li class="nav-item active">
+			<a class="nav-link" href="{% url 'login' %}"> Login <span class="sr-only"></span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{% url 'register' %}"> Register</a>
+		</li>
+		{% endif %}
     </ul>
   </div>
 </nav>

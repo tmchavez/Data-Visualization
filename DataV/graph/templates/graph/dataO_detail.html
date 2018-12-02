@@ -1,0 +1,35 @@
+{% extends "graph/base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'graph/d3/default.css' %}">
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="https://peterbeshai.com/d3-interpolate-path/d3-interpolate-path.js"></script>
+<script src="{% static 'graph/tone/node_modules/tone/build/Tone.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static 'graph/d3/d3_main.js' %}"></script>
+<script src="{% static 'graph/d3/ocs.js' %}"></script>
+
+<body>
+
+		  {{ object.title }}
+
+	<div class="button-holder">
+		<!-- <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input> -->
+		<br>
+
+		  <label>Enter Values: </label><input size="40" type="text" value = "{{object.content}}" id="inputArray" />
+			
+		<button content="test content" class="btn" onclick="inputArray();">PLAY</button><br />
+		<button content="test content" class="btn" onclick="clearSeries();">ERASE</button><br />
+
+	</div>
+	<input name="inputButton" type="button" value="Input"
+		   onclick="parse()" />
+	<input name="updateButton" type="button" value="Update"
+		   onclick="newParse()" />
+	<div class="chart"></div>
+	<svg></svg>
+</body>
+
+{% endblock content %}

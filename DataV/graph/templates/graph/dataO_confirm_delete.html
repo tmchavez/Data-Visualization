@@ -1,0 +1,17 @@
+{% extends "graph/base.html" %}
+{%block content %}
+  <div>
+    <form method = "POST">
+      {% csrf_token %}
+      <fieldset>
+        <legend> Deleted DataSet </legend>
+      </fieldset>
+      <div>
+        <button class = "btn btn-outline-info" type = "submit"> Delete "{{object.title}}" ?</button>
+        <a> Push 'Home' to go Home </a>
+      </div>
+    </form>
+  </div>
+
+
+{% endblock content %}
