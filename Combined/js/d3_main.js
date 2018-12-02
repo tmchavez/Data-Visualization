@@ -54,7 +54,7 @@ function parse() {
 		yData[i] = parseFloat(yData[i]);
 	}
 
-	line_chart(xData, yData, name);
+	line_chart(yData, name);
 	initializeSeries(yData);
 	playSeries(yData);
 }
@@ -96,7 +96,7 @@ function makechart(data) {
 }
 
 
-function line_chart(xData, yData, name) {
+function line_chart(data, name) {
 	var svg = d3.select('svg')
 		.attr("width", svg_width)
 		.attr("height", svg_height);
@@ -105,11 +105,11 @@ function line_chart(xData, yData, name) {
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	var line = d3.line()
-			.x(function (d) { return x(d) })
+			.x(function (d) { return x(data.indexOf(d)) })
 			.y(function (d) { return y(d) });
 
-	x.domain(d3.extent(xData, function (d) { return d; }));
-	y.domain([0, d3.max(yData, function (d) { return d; })]);
+	x.domain(d3.extent(data, function (d) { return data.indexOf(d); }));
+	y.domain([0, d3.max(data, function (d) { return d; })]);
 
 	g.append("g")
 		.attr("class", "x_axis")
@@ -130,7 +130,7 @@ function line_chart(xData, yData, name) {
 		.text(name);
 
 	g.append("path")
-		.datum(yData)
+		.datum(data)
 		.attr("class", "line")
 		.attr("fill", "none")
 		.attr("stroke", "steelblue")
