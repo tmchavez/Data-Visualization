@@ -7,21 +7,23 @@
 <script src="https://peterbeshai.com/d3-interpolate-path/d3-interpolate-path.js"></script>
 <script src="{% static 'graph/tone/node_modules/tone/build/Tone.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="{% static 'graph/d3/d3_main.js' %}"></script>
-<script src="{% static 'graph/d3/ocs.js' %}"></script>
+<script src="{% static 'graph/tone/osc.js' %}"></script>
 
 <body>
 
 		  {{ object.title }}
 
 	<div class="button-holder">
-		<!-- <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input> -->
 		<br>
 
-		  <label>Enter Values: </label><input size="40" type="text" value = "{{object.content}}" id="inputArray" />
-			
-		<button content="test content" class="btn" onclick="inputArray();">PLAY</button><br />
-		<button content="test content" class="btn" onclick="clearSeries();">ERASE</button><br />
+			<label>Name: </label>
+	    <input size="40" type="text" id="name"><br><br>
+
+	    <label>Data: </label>
+	    <input size="40" type="text" id="inputArrayX">
+	    <input size="40" type="text" id="inputArrayY" value="{{object.content}}">
 
 	</div>
 	<input name="inputButton" type="button" value="Input"
