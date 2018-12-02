@@ -2,43 +2,39 @@
 {% load static %}
 {% block content %}
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="{% static 'graph/d3/default.css' %}">
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="https://peterbeshai.com/d3-interpolate-path/d3-interpolate-path.js"></script>
+<script src="{% static 'graph/tone/node_modules/tone/build/Tone.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="{% static 'graph/d3/d3_main.js' %}"></script>
+<script src="{% static 'graph/d3/ocs.js' %}"></script>
 
+<body>
+  {% for data1 in datasets %}
+    {% if data1.title == 'test'%}
+		  {{ data1.content }}
+    {% endif %}
+	{% endfor %}
 
-  <!-- d_3 script includes  -->
-  <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-  <script src="https://peterbeshai.com/d3-interpolate-path/d3-interpolate-path.js"></script>
-  <script src="{% static 'graph/d3/d3_main.js' %}"></script>
+	<div class="button-holder">
+		<!-- <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input> -->
+		<br>
+		{% for data1 in datasets %}
+	    {% if data1.title == 'test 3'%}
+		  <label>Enter Values: </label><input size="40" type="text" value = "{{data1.content}}" id="inputArray" />
+			{% endif %}
+		{% endfor %}
 
+    <label>Name: </label>
+    <input size="40" type="text" id="name"><br><br>
 
-  <div class="button-holder">
-    <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input>
-    <br>
-    <input type="checkbox" id="toggle-dir" name="direction" onclick=toggleDir();>checked = up, no check = down</input>
-  </div>
+    <label>Data: </label>
+    <input size="40" type="text" id="inputArrayX">
+    <input size="40" type="text" id="inputArrayY">
 
-
-
-
-
-  <!-- display the current database -->
-  <div class = "dataloadin">
-    {% for data1 in datasets %}
-      <p> {{ data1.title}} - {{data1.content}} </p>
-    {% endfor %}
-  </div>
-
-  <!-- source of bugs -->
-  <link rel="stylesheet" href="{% static 'graph/d3/default.css' %}">
-  <label>Name: </label>
-  <input size="40" type="text" id="name"><br><br>
-
-  <label>Data: </label>
-  <input size="40" type="text" id="inputArrayX">
-  <input size="40" type="text" id="inputArrayY">
+	</div>
 	<input name="inputButton" type="button" value="Input"
 		   onclick="parse()" />
 	<input name="updateButton" type="button" value="Update"
