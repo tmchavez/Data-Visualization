@@ -1,4 +1,4 @@
-﻿/* Main JavaScript for D3 Vizualization */
+/* Main JavaScript for D3 Vizualization */
 
 // Static variables for svg attributes.
 var svg_width = 600, svg_height = 400;
@@ -62,7 +62,7 @@ function parse() {
 			xData[i] = parseFloat(i);
 			yData[i] = parseFloat(yData[i]);
 		}
-	}
+	} else { return }
 
 	for (var i = 0; i < yData.length; i++) {
 		data.push(
@@ -71,6 +71,7 @@ function parse() {
 				value: yData[i]
 			});
 	}
+	data.sort(function (a, b) { return a.index - b.index });
 
 	line_chart(data, name);
 	initializeSeries(yData);
@@ -178,7 +179,6 @@ function line_chart(data, name) {
 		var l = this.getTotalLength(),
 			i = d3.interpolateString("0," + l, l + "," + l);
 		return function (t) { return i(t); };
-
 		//*/
 
 		/*
@@ -207,6 +207,47 @@ function line_chart(data, name) {
 }
 
 function searchPoint() {
-	var point = document.getElementById("xSearch");
-	console.log(data);
+	var x = parseFloat(document.getElementById("xSearch").value);
+	var y = null;
+
+	// Check if data array exists
+	var dataExists = (Array.isArray(data)) && data.length != 0;
+	if(!dataExists){
+		console.log("initalize array first");
+		return;
+	}
+
+	// Check if point is in data array
+	var xInGraph = (x >= data[0].index) && (x <= data[data.length-1].index);
+	if(!xInGraph){
+		console.log("x is invalid");
+		return;
+	}
+
+	for(var i = 0; i<data.length; i++){
+		if(x == data[i].index){
+				y = data[i].value;
+				break;
+		}
+		else if(x > data[i].index && x < data[i+1].index){
+				y = distanceAtYGivenX(x, data[i], data[i+1]);
+				break;
+		}
+	}
+
+	console.log("y is "+y);
+}
+
+function distanceAtYGivenX(x, point1, point2){
+
+		var x1 = point1.index;
+		var y1 = point1.value;
+		var x2 = point2.index;
+		var y2 = point2.value;
+
+		var m = (y2 - y1) / (x2 - x1);
+		var b = y1 - m * x1;
+
+		return m * x + b;
+
 }
