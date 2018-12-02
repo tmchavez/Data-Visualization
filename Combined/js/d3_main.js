@@ -62,8 +62,21 @@ function parse() {
 	line_chart(data, name);
 	initializeSeries(yData);
 	playSeries(yData);
+	replaceInput();
 }
 
+
+function replaceInput() {
+	var inputButton = document.getElementById("submit");
+	inputButton.remove();
+
+	var button = d3.select(".lineButtons");
+	button.append("input")
+		.attr("name", "updateButton")
+		.attr("type", "button")
+		.attr("value", "Update")
+		.attr("onclick", "newParse()")
+}
 
 // Updatas the values in the line graph
 function updateInput() {
