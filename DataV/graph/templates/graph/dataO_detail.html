@@ -7,32 +7,21 @@
 <script src="https://peterbeshai.com/d3-interpolate-path/d3-interpolate-path.js"></script>
 <script src="{% static 'graph/tone/node_modules/tone/build/Tone.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script src="{% static 'graph/d3/d3_main.js' %}"></script>
 <script src="{% static 'graph/d3/ocs.js' %}"></script>
 
 <body>
-  {% for data1 in datasets %}
-    {% if data1.title == 'test'%}
-		  {{ data1.content }}
-    {% endif %}
-	{% endfor %}
+
+		  {{ object.title }}
 
 	<div class="button-holder">
 		<!-- <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input> -->
 		<br>
-		{% for data1 in datasets %}
-	    {% if data1.title == 'test 3'%}
-		  <label>Enter Values: </label><input size="40" type="text" value = "{{data1.content}}" id="inputArray" />
-			{% endif %}
-		{% endfor %}
 
-    <label>Name: </label>
-    <input size="40" type="text" id="name"><br><br>
-
-    <label>Data: </label>
-    <input size="40" type="text" id="inputArrayX">
-    <input size="40" type="text" id="inputArrayY">
+		  <label>Enter Values: </label><input size="40" type="text" value = "{{object.content}}" id="inputArray" />
+			
+		<button content="test content" class="btn" onclick="inputArray();">PLAY</button><br />
+		<button content="test content" class="btn" onclick="clearSeries();">ERASE</button><br />
 
 	</div>
 	<input name="inputButton" type="button" value="Input"
@@ -41,11 +30,6 @@
 		   onclick="newParse()" />
 	<div class="chart"></div>
 	<svg></svg>
-  <div class="chart">
-  </div>
-  <label>Search Point (x): </label>
-  <input size="40" type="text" id="xSearch">
-  <input name="inputSearch" type="button" value="inputSearch" onclick="searchPoint()"/>
-  <br><br>
+</body>
 
 {% endblock content %}

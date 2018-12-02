@@ -2,6 +2,16 @@
 {% load static %}
 {%block content %}
 <center><h1>Enter Data Points</h1></center>
+    {% for data1 in datasets %}
+			<div>
+        {% if data1.author == user %}
+          {{data1.title}}:  {{data1.id}} <br>
+          {{data1.content}} <br>
+          <a href = "/graph/data/{{data1.id}}/"> Visualize this Data </a> --X--
+          <a href = "/graph/data/{{data1.id}}/delete"> Delete This Data</a> <br>
+        {% endif %}
+			</div>
+		{% endfor %}
 		<p>
 		<center><input id="value" placeholder="value"></center>
 		</p>

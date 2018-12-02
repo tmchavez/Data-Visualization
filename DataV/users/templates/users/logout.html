@@ -1,0 +1,12 @@
+{% extends "graph/base.html" %}
+{%block content %}
+   <h1> You have been logged out </h1>
+    <div class = "border-top pt-3">
+      <small> login again?
+      <a href = "{% url 'login' %}"> Sign in </a>
+      </small>
+    </div>
+  </div>
+
+
+{% endblock content %}

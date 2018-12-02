@@ -1,0 +1,12 @@
+{% extends "graph/base.html" %}
+{%block content %}
+   <h1>{{ user.username }} </h1>
+   <div>
+   {% for data1 in datasets %}
+     <!--{% if data1.author == user.username %}-->
+       {{data1.title}}-{{data1.content}}
+     <!--{% endif %}-->
+   {% endfor %}
+   </div>
+
+{% endblock content %}
