@@ -178,6 +178,7 @@ function line_chart(data, name) {
 		var l = this.getTotalLength(),
 			i = d3.interpolateString("0," + l, l + "," + l);
 		return function (t) { return i(t); };
+
 		//*/
 
 		/*
@@ -203,4 +204,9 @@ function line_chart(data, name) {
 		}
 		//*/
 	}
+}
+
+function searchPoint() {
+	var point = document.getElementById("xSearch");
+	console.log(data);
 }
