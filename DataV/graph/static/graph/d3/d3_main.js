@@ -9,6 +9,7 @@ var height = svg_height - margin.top - margin.bottom;
 var x = d3.scaleLinear().rangeRound([0, width]);
 var y = d3.scaleLinear().rangeRound([height, 0]);
 
+var data = [];
 
 function updateInput(data) {
 	var x = d3.scaleLinear().rangeRound([0, width]);
@@ -50,11 +51,28 @@ function parse() {
 		.split(" ");
 	var name = document.getElementById("name").value;
 
-	for (var i = 0; i < yData.length; i++) {
-		yData[i] = parseFloat(yData[i]);
+	if (xData.length == yData.length) {
+		xData.length = yData.length;
+		for (var i = 0; i < yData.length; i++) {
+			xData[i] = parseFloat(xData[i]);
+			yData[i] = parseFloat(yData[i]);
+		}
+	} else if (xData.length == 1) {
+		for (var i = 0; i < yData.length; i++) {
+			xData[i] = parseFloat(i);
+			yData[i] = parseFloat(yData[i]);
+		}
 	}
 
-	line_chart(yData, name);
+	for (var i = 0; i < yData.length; i++) {
+		data.push(
+			{
+				index: xData[i],
+				value: yData[i]
+			});
+	}
+
+	line_chart(data, name);
 	initializeSeries(yData);
 	playSeries(yData);
 }
@@ -85,7 +103,7 @@ function newParse() {
 	}
 }
 
-
+// Creates a bar graph
 function makechart(data) {
 	d3.select(".chart")
 		.selectAll("div")
@@ -95,7 +113,7 @@ function makechart(data) {
 		.text(function (d) { return d; });
 }
 
-
+// Creates a line graph
 function line_chart(data, name) {
 	var svg = d3.select('svg')
 		.attr("width", svg_width)
@@ -105,11 +123,11 @@ function line_chart(data, name) {
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	var line = d3.line()
-			.x(function (d) { return x(data.indexOf(d)) })
-			.y(function (d) { return y(d) });
+			.x(function (d) { return x(d.index) })
+			.y(function (d) { return y(d.value) });
 
-	x.domain(d3.extent(data, function (d) { return data.indexOf(d); }));
-	y.domain([0, d3.max(data, function (d) { return d; })]);
+	x.domain(d3.extent(data, function (d) { return d.index }));
+	y.domain([0, d3.max(data, function (d) { return d.value })]);
 
 	g.append("g")
 		.attr("class", "x_axis")
@@ -140,6 +158,7 @@ function line_chart(data, name) {
 		.attr("d", line)
 		.call(transition);
 
+	// Transition function for animating the line
 	function transition(path) {
 		path.transition()
 			.duration(6000)
@@ -147,6 +166,7 @@ function line_chart(data, name) {
 			.attrTween("stroke-dasharray", tweenDash);
 	}
 
+	// Calculation for animation
 	function tweenDash() {
 		/*
 		var line = d3.line()
@@ -183,9 +203,4 @@ function line_chart(data, name) {
 		}
 		//*/
 	}
-}
-
-function searchPoint(){
-		var point = document.getElementById("xSearch").value;
-		console.log(line);
 }
