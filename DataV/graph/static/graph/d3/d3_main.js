@@ -1,9 +1,5 @@
 /* Main JavaScript for D3 Vizualization */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> dba4e44251cf9147de33fbe4bf3f340554bcc1b2
 // Static variables for svg attributes.
 var svg_width = 600, svg_height = 400;
 var margin = { top: 20, right: 20, bottom: 30, left: 50 };
@@ -31,17 +27,13 @@ function updateInput(data) {
 	svg.select(".line")
 		.duration(2000)
 		.attr("d", line(data));
-<<<<<<< HEAD
-=======
+
 function updateInput() {
 	var new_data = document.getElementById("inputArray").value.split(" ");
 	for (var i = 0; i < new_data.length; i++) {
 		new_data[i] = parseFloat(new_data[i]);
 	}
 }
->>>>>>> testing
-=======
->>>>>>> dba4e44251cf9147de33fbe4bf3f340554bcc1b2
 
 	svg.select(".x_axis")
 		.duration(2000)
@@ -54,10 +46,6 @@ function updateInput() {
 
 // Parses input and graphs line chart when "Input" button is pressed
 function parse() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> dba4e44251cf9147de33fbe4bf3f340554bcc1b2
 	var xData = document.getElementById("inputArrayX")
 		.value
 		.replace(/\s\s+/g, " ")
@@ -95,8 +83,6 @@ function parse() {
 	line_chart(data, name);
 	initializeSeries(yData);
 	playSeries(yData);
-<<<<<<< HEAD
-=======
 	var data = document.getElementById("inputArray").value.split(" ");
 	for (var i = 0; i < data.length; i++) {
 		data[i] = parseFloat(data[i]);
@@ -104,9 +90,6 @@ function parse() {
 	line_chart(data);
 	initializeSeries(data);
 	playSeries(data);
->>>>>>> testing
-=======
->>>>>>> dba4e44251cf9147de33fbe4bf3f340554bcc1b2
 }
 
 // Updates the current graph
