@@ -235,8 +235,7 @@ function searchPoint() {
 		}
 	}
 
-	removeSearchPoint();
-	plotSearchPoint();
+	plotSearchPoint(x, y);
 
 	console.log("y is "+y);
 }
@@ -255,10 +254,6 @@ function distanceAtYGivenX(x, point1, point2){
 
 }
 
-function removeSearchPoint(){
-
-}
-
-function plotSearchPoint(){
+function plotSearchPoint(x, y){
 
 }
