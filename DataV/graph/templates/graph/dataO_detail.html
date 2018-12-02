@@ -11,21 +11,15 @@
 <script src="{% static 'graph/d3/ocs.js' %}"></script>
 
 <body>
-  {% for data1 in datasets %}
-    {% if data1.title == 'test'%}
-		  {{ data1.content }}
-    {% endif %}
-	{% endfor %}
+
+		  {{ object.title }}
 
 	<div class="button-holder">
 		<!-- <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input> -->
 		<br>
-		{% for data1 in datasets %}
-	    {% if data1.title == 'test 3'%}
-		  <label>Enter Values: </label><input size="40" type="text" value = "{{data1.content}}" id="inputArray" />
-			{% endif %}
-		{% endfor %}
 
+		  <label>Enter Values: </label><input size="40" type="text" value = "{{object.content}}" id="inputArray" />
+			
 		<button content="test content" class="btn" onclick="inputArray();">PLAY</button><br />
 		<button content="test content" class="btn" onclick="clearSeries();">ERASE</button><br />
 
