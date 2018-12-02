@@ -235,6 +235,9 @@ function searchPoint() {
 		}
 	}
 
+	removeSearchPoint();
+	plotSearchPoint();
+
 	console.log("y is "+y);
 }
 
@@ -249,5 +252,13 @@ function distanceAtYGivenX(x, point1, point2){
 		var b = y1 - m * x1;
 
 		return m * x + b;
+
+}
+
+function removeSearchPoint(){
+
+}
+
+function plotSearchPoint(){
 
 }
