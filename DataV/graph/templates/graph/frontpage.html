@@ -6,7 +6,8 @@
 			<div>
         {% if data1.author == user %}
           {{data1.title}}:  {{data1.id}} <br>
-          {{data1.content}} <br>
+          Xaxis - {{data1.xaxis}} <br>
+          Yaxis - {{data1.yaxis}} <br>
           <a href = "/graph/data/{{data1.id}}/"> Visualize this Data </a> --X--
           <a href = "/graph/data/{{data1.id}}/delete"> Delete This Data</a> <br>
         {% endif %}
@@ -16,12 +17,12 @@
 		<center><input id="value" placeholder="value"></center>
 		</p>
 		<center>
-	
+
 		 <form method="post" enctype="multipart/form-data">
         	<input type="file" name="files[]" multiple>
        		 <input type="submit" value="Upload File" name="submit">
    		 </form>
-	
+
     <a href = "{% url 'graph-result'%}"> results </a>
 		</center>
 

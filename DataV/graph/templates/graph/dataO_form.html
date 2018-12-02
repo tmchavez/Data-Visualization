@@ -5,6 +5,10 @@
       {% csrf_token %}
       <fieldset>
         <legend> Insert Your Data </legend>
+        <small> If you need to use y and x axis coordinates, <br>
+                fill out 1 to 1. <br>
+                If linear, just fill out yaxis. <br>
+        </small>
         {{form.as_p }}
       </fieldset>
       <div>
