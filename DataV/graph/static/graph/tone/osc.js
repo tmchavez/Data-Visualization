@@ -27,7 +27,7 @@ function playSeries(arr){
 }
 
 function playNote(){
-    bellTone.triggerAttackRelease('C4', '8n');
+    bellTone.triggerAttack();
 }
 
 function clearSeries(){
