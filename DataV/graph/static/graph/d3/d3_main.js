@@ -71,11 +71,18 @@ function replaceInput() {
 	inputButton.remove();
 
 	var button = d3.select(".lineButtons");
-	button.append("input")
+	button.append("button")
 		.attr("name", "updateButton")
 		.attr("type", "button")
+		.attr("id", "update-button")
 		.attr("value", "Update")
 		.attr("onclick", "newParse()")
+		.attr("class", "arrow-button")
+		
+	var b = document.createElement("span");
+	var text = document.createTextNode("Update");
+	b.appendChild(text);
+	document.getElementById("update-button").appendChild(b);
 }
 
 // Updatas the values in the line graph

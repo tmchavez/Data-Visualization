@@ -11,6 +11,8 @@
 <script src="{% static 'graph/d3/d3_main.js' %}"></script>
 <script src="{% static 'graph/tone/osc.js' %}"></script>
 
+<link rel="stylesheet" href="{% static 'graph/css/detail.css' %}">
+
 <body>
 	<br>
 	<div class="button-holder">
@@ -21,7 +23,9 @@
 	    <input size="40" type="text" id="inputArrayY" value="{{object.yaxis}}">
 	</div>
 	<div class="lineButtons">
-			<input name="inputButton" type="button" value="Input" onclick="parse()" id="submit" />
+			<button name="inputButton" class="arrow-button" type="button" value="Input" onclick="parse();" id="submit">
+					<span>Input</span>
+			</button>
   </div>
 
 	<div class="chart"></div>
