@@ -1,4 +1,4 @@
-cvsparse(){
+csvparse(){
 $(document).ready(function() {
       if(isAPIAvailable()) {
         $('#files').bind('change', handleFileSelect);
