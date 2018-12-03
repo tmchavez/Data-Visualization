@@ -7,17 +7,7 @@ var lowFreq = 200;
 
 Tone.Transport.bpm.value = 23;
 
-function togglePlay(){
-  if($('#toggle-play').is(':checked')){
-    freq = 440;
-    Tone.Transport.stop();
-    osc.start();
-    Tone.Master.volume.rampTo(0, 0.1);
-    Tone.Transport.start();
-  }else{
-    Tone.Master.volume.rampTo(-Infinity, 0.05);
-  }
-}
+// EXECUTE SOUND FUNCTIONS ====================================================
 
 function playSeries(arr){
   Tone.Transport.stop();
@@ -59,14 +49,11 @@ function scaleArray(arr){
   return toneArr;
 }
 
-var boopTone = new Tone.MonoSynth(4, Tone.Synth, {
-    "volume" : -8,
-    "oscillator" : {
-      "type" : "sine",
-      "partials" : [1, 3, 5],
-    },
-    "portamento" : 0.05
-}).toMaster();
+$(function(){
+  Tone.Master.volume.rampTo(-Infinity, 0.05);
+});
+
+// CHANGE SOUND FUNCTIONS ====================================================
 
 function setSquare(){
   boopTone.set({
@@ -100,6 +87,17 @@ function setTriangle(){
   });
 }
 
+// INSTRUMENTS  ===============================================================
+
+var boopTone = new Tone.MonoSynth(4, Tone.Synth, {
+    "volume" : -8,
+    "oscillator" : {
+      "type" : "sine",
+      "partials" : [1, 3, 5],
+    },
+    "portamento" : 0.05
+}).toMaster();
+
 var bongTone = new Tone.MembraneSynth({
 			"pitchDecay" : 0.008,
 			"octaves" : 2,
@@ -123,7 +121,3 @@ var bellTone = new Tone.MetalSynth({
       },
       "volume" : -8
 }).toMaster();
-
-$(function(){
-  Tone.Master.volume.rampTo(-Infinity, 0.05);
-});
