@@ -25,12 +25,12 @@
 	</div>
 	<div class="input-group">
 		<label style="padding: 10px;">X-Axis: </label>
-		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		<span class="input-group-addon"></span>
 		<input id="inputArrayX" type="text" class="form-control" name="x" placeholder="X-Axis" value="{{object.xaxis}}">
 	</div>
 	<div class="input-group">
 		<label style="padding: 10px;">Y-Axis:</label>
-		<span class="input-group-addon"><i class="glyphicon glyphicon-resize-vertical"></i></span>
+		<span class="input-group-addon"></span>
 		<input id="inputArrayY" class="form-control" name="y" placeholder="Y-Axis" value="{{object.yaxis}}">
 	</div>
 	<div class="lineButtons">
@@ -41,18 +41,21 @@
 
 	<div class="chart"></div>
 	<svg></svg>
-	<div id="search-point">
-  		<input size="40" type="text" id="xSearch">
-  		<input name="inputSearch" type="button" value="inputSearch" placeholder="Search Point (x)"onclick="searchPoint()"/>
-	</div>
-  <br><br>
-
-	<div class="btn-group">
+	<div class="btn-group-vertical">
+			<label>Pick Synth:</label>
       <button type="button" onclick="setSine()" class="btn btn-primary">Sine</button>
       <button type="button" onclick="setSaw()" class="btn btn-primary">Sawtooth</button>
       <button type="button" onclick="setSquare()" class="btn btn-primary">Square</button>
       <button type="button" onclick="setTriangle()" class="btn btn-primary">Triangle</button>
   </div>
+	<div id="search-point">
+			<label>Search Point (x)</label>
+  		<input size="40" type="text" id="xSearch">
+  		<input name="inputSearch" type="button" value="inputSearch" placeholder="Search Point (x)" onclick="searchPoint()"/>
+	</div>
+  <br><br>
+
+
 </body>
 
 {% endblock content %}
