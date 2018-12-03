@@ -11,47 +11,58 @@
 <script src="{% static 'graph/d3/d3_main.js' %}"></script>
 <script src="{% static 'graph/tone/osc.js' %}"></script>
 
+<link rel="stylesheet" href="{% static 'graph/css/detail.css' %}">
+
 <body>
-  {% for data1 in datasets %}
-    {% if data1.title == 'test'%}
-		  {{ data1.content }}
-    {% endif %}
-	{% endfor %}
-
+	<br>
 	<div class="button-holder">
-		<!-- <input type="checkbox" id="toggle-play" name="play" onclick=togglePlay();>play</input> -->
-		<br>
-		{% for data1 in datasets %}
-	    {% if data1.title == 'test 3'%}
-		  <label>Enter Values: </label><input size="40" type="text" value = "{{data1.content}}" id="inputArray" />
-			{% endif %}
-		{% endfor %}
-
-    <label>Name: </label>
-    <input size="40" type="text" id="name"><br><br>
-
-    <label>Data: </label>
-    <input size="40" type="text" id="inputArrayX">
-    <input size="40" type="text" id="inputArrayY">
-
+			<label>Graph Name: </label>
+			<br>
+	    <input size="40" type="text" id="name" value = "{{object.title}}"><br><br>
 	</div>
-	<input name="inputButton" type="button" value="Input"
-		   onclick="parse()" />
-	<input name="updateButton" type="button" value="Update"
-		   onclick="newParse()" />
-	<div class="chart"></div>
-	<svg></svg>
-  <div class="chart">
+	<div class="input-group">
+		<label style="padding: 10px;">X-Axis: </label>
+		<span class="input-group-addon"></span>
+		<input id="inputArrayX" type="text" class="form-control" name="x" placeholder="X-Axis">
+	</div>
+	<div class="input-group">
+		<label style="padding: 10px;">Y-Axis:</label>
+		<span class="input-group-addon"></span>
+		<input id="inputArrayY" type="text"class="form-control" name="y" placeholder="Y-Axis">
+	</div>
+	<div class="lineButtons">
+			<button name="inputButton" class="arrow-button" type="button" value="Input" onclick="parse();" id="submit">
+					<span>Input</span>
+			</button>
   </div>
-  <label>Search Point (x): </label>
-  <input size="40" type="text" id="xSearch">
-  <input name="inputSearch" type="button" value="inputSearch" onclick="searchPoint()"/>
-  <br><br>
-  <div class="btn-group-vertical">
-      <button type="button" onclick="setSine()" class="btn btn-primary">Sine</button>
-      <button type="button" onclick="setSaw()" class="btn btn-primary">Sawtooth</button>
-      <button type="button" onclick="setSquare()" class="btn btn-primary">Square</button>
-      <button type="button" onclick="setTriangle()" class="btn btn-primary">Triangle</button>
-  </div>
+
+	<br>
+	<br>
+
+	<div class="row">
+		<div class="col-6">
+				<div class="chart"></div>
+				<svg></svg>
+		</div>
+		<div class="col-2">
+				<div class="btn-group-vertical">
+						<label>Pick Synth:</label>
+      			<button type="button" onclick="setSine()" class="btn btn-primary">Sine</button>
+      			<button type="button" onclick="setSaw()" class="btn btn-primary">Sawtooth</button>
+      			<button type="button" onclick="setSquare()" class="btn btn-primary">Square</button>
+      			<button type="button" onclick="setTriangle()" class="btn btn-primary">Triangle</button>
+  			</div>
+		</div>
+		<div class="col-2">
+				<div id="search-point">
+						<label>Search Point (x)</label>
+  					<input size="40" type="text" id="xSearch">
+  					<input name="inputSearch" type="button" value="inputSearch" placeholder="Search Point (x)" onclick="searchPoint()"/>
+					</div>
+		</div>
+	</div>
+
+
+</body>
 
 {% endblock content %}
