@@ -18,9 +18,20 @@
 	<div class="button-holder">
 			<label>Name: </label>
 	    <input size="40" type="text" id="name" value = "{{object.title}}"><br><br>
-	    <label>Data: </label>
-	    <input size="40" type="text" id="inputArrayX" value = "{{object.xaxis}}">
-	    <input size="40" type="text" id="inputArrayY" value="{{object.yaxis}}">
+	</div>
+	<div class="input-holder">
+			<label style="text-align:center">Data: </label>
+
+	</div>
+	<div class="input-group">
+		<label style="padding: 10px;">X-Axis: </label>
+		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		<input id="inputArrayX" type="text" class="form-control" name="x" placeholder="X-Axis" value="{{object.xaxis}}">
+	</div>
+	<div class="input-group">
+		<label style="padding: 10px;">Y-Axis:</label>
+		<span class="input-group-addon"><i class="glyphicon glyphicon-resize-vertical"></i></span>
+		<input id="inputArrayY" class="form-control" name="y" placeholder="Y-Axis" value="{{object.yaxis}}">
 	</div>
 	<div class="lineButtons">
 			<button name="inputButton" class="arrow-button" type="button" value="Input" onclick="parse();" id="submit">
