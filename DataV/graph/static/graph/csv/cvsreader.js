@@ -29,20 +29,35 @@ function isAPIAvailable() {
 function handleFileSelect(evt) {
       var files = evt.target.files; // FileList object
       var file = files[0];
-      printTable(file);
+      printData(file);
     }
-    function printTable(file) {
-        var header = parseInt(document.getElementById("value"));
+    function printData(file) {
+        var xheader = document.getElementById("id_xaxis").value;
+          var yheader= document.getElementById("id_yaxis").value;
+          var xData = "";
+          var yData= "";
       var reader = new FileReader();
       reader.readAsText(file);
       reader.onload = function(event){
         var csv = event.target.result;
         var data = $.csv.toArrays(csv);
-       var list;
-       for(int i=0;i<data[header].length;i++){
-       list[i]=data[header][i];
-       }
-       
+            if(xheader!=""){
+            xheader = parseInt(xheader);
+                  xData= "" + data[xheader][0];
+                  for(int i=1;i<data[xheader].length;i++){
+                        xData+=" "+data[xheader][i];
+                  }  
+            }
+             getElementById("id_xaxis").innerHTML=xData;
+            if(yheader!=""){
+            yheader = parseInt(yheader);
+                  yData= "" + data[yheader][0];
+                  for(int i=1;i<data[yheader].length;i++){
+                        yData+=" "+data[yheader][i];
+                  }  
+            }
+             getElementById("id_yaxis").innerHTML=yData;
+      
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
     }
