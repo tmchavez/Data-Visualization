@@ -49,7 +49,7 @@ function handleFileSelect(evt) {
                         xData+=" "+data[xheader][i];
                   }  
             }
-             getElementById("id_xaxis").innerHTML=xData;
+             document.getElementById("id_xaxis").innerHTML=xData;
             if(yheader!=""){
             yheader = parseInt(yheader);
                   yData= "" + data[yheader][0];
@@ -57,7 +57,7 @@ function handleFileSelect(evt) {
                         yData+=" "+data[yheader][i];
                   }  
             }
-             getElementById("id_yaxis").innerHTML=yData;
+             document.getElementById("id_yaxis").innerHTML=yData;
       
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
