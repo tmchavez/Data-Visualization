@@ -39,21 +39,31 @@
 			</button>
   </div>
 
-	<div class="chart"></div>
-	<svg></svg>
-	<div class="btn-group-vertical">
-			<label>Pick Synth:</label>
-      <button type="button" onclick="setSine()" class="btn btn-primary">Sine</button>
-      <button type="button" onclick="setSaw()" class="btn btn-primary">Sawtooth</button>
-      <button type="button" onclick="setSquare()" class="btn btn-primary">Square</button>
-      <button type="button" onclick="setTriangle()" class="btn btn-primary">Triangle</button>
-  </div>
-	<div id="search-point">
-			<label>Search Point (x)</label>
-  		<input size="40" type="text" id="xSearch">
-  		<input name="inputSearch" type="button" value="inputSearch" placeholder="Search Point (x)" onclick="searchPoint()"/>
+	<br>
+	<br>
+
+	<div class="row">
+		<div class="col-6">
+				<div class="chart"></div>
+				<svg></svg>
+		</div>
+		<div class="col-2">
+				<div class="btn-group-vertical">
+						<label>Pick Synth:</label>
+      			<button type="button" onclick="setSine()" class="btn btn-primary">Sine</button>
+      			<button type="button" onclick="setSaw()" class="btn btn-primary">Sawtooth</button>
+      			<button type="button" onclick="setSquare()" class="btn btn-primary">Square</button>
+      			<button type="button" onclick="setTriangle()" class="btn btn-primary">Triangle</button>
+  			</div>
+		</div>
+		<div class="col-2">
+				<div id="search-point">
+						<label>Search Point (x)</label>
+  					<input size="40" type="text" id="xSearch">
+  					<input name="inputSearch" type="button" value="inputSearch" placeholder="Search Point (x)" onclick="searchPoint()"/>
+					</div>
+		</div>
 	</div>
-  <br><br>
 
 
 </body>
