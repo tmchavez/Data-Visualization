@@ -1,4 +1,5 @@
 {% extends "graph/base.html" %}
+{%load static %}
 {%block content %}
   <div>
     <form method = "POST">
@@ -9,8 +10,10 @@
                 fill out 1 to 1. <br>
                 If linear, just fill out yaxis. <br>
         </small>
+        <script src="{% static 'graph/csv/jquery.csv.js' %}"> </script>
+         <script src="{% static 'graph/csv/csvreader.js' %}"> </script>
          <input type="file" id="files" name="files[]" multiple />
-         <input type="button" value="Load File" onclick="cvsparse()">
+         <input type="button" value="Load File" onclick="csvparse()">
         {{form.as_p }}
       </fieldset>
       <div>
