@@ -43,3 +43,7 @@
   width: 80%;
   left: 10%;
 }
+
+#search-point {
+  display: none;
+}

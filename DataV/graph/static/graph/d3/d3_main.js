@@ -78,11 +78,13 @@ function replaceInput() {
 		.attr("value", "Update")
 		.attr("onclick", "newParse()")
 		.attr("class", "arrow-button")
-		
+
 	var b = document.createElement("span");
 	var text = document.createTextNode("Update");
 	b.appendChild(text);
 	document.getElementById("update-button").appendChild(b);
+
+	$("#search-point").show();
 }
 
 // Updatas the values in the line graph
