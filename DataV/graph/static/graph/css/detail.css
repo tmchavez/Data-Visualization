@@ -1,3 +1,5 @@
+
+
 .arrow-button {
   display: inline-block;
   border-radius: 4px;
@@ -39,12 +41,17 @@
   right: 0;
 }
 
-.input-group {
-  width: 80%;
-  left: 10%;
+.button-holder {
+  display: block;
+  text-align: center;
+  position: center;
 }
 
-.input-group {
+.button-holder input {
+    text-align: center;
+}
+
+.input-group  {
   width: 80%;
   left: 10%;
 }
