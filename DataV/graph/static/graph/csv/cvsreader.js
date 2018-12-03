@@ -1,3 +1,4 @@
+cvsparse(){
 $(document).ready(function() {
       if(isAPIAvailable()) {
         $('#files').bind('change', handleFileSelect);
@@ -61,3 +62,5 @@ function handleFileSelect(evt) {
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
     }
+      
+}
