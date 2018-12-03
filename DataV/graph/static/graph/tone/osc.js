@@ -5,12 +5,17 @@ var arrayPlay;
 var highFreq = 800;
 var lowFreq = 200;
 
+// in seconds
+var totalTime = 6;
+
 Tone.Transport.bpm.value = 23;
 
 // EXECUTE SOUND FUNCTIONS ====================================================
 
-function playSeries(){
+function playSeries(numNotes){
+  Tone.Transport.bpm.value = numNotes * 10;
   Tone.Transport.stop();
+
   Tone.Master.volume.rampTo(0, 0.1);
   Tone.Transport.start('+0.1');
   console.log("playing");

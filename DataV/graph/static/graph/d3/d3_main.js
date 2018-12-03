@@ -60,9 +60,8 @@ function parse() {
 	data.sort(function (a, b) { return a.index - b.index });
 
 	line_chart(data, name);
-	console.log(data);
 	initializeSeries(data);
-	playSeries();
+	playSeries(data.length);
 	replaceInput();
 }
 
@@ -152,8 +151,8 @@ function newParse() {
 	updateInput();
 	clearSeries();
 	clearPoints();
-	initializeSeries(yData);
-	playSeries(yData);
+	initializeSeries(data);
+	playSeries(data.length);
 }
 
 // Creates a line graph
