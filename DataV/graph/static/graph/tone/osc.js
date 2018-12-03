@@ -9,7 +9,7 @@ Tone.Transport.bpm.value = 23;
 
 // EXECUTE SOUND FUNCTIONS ====================================================
 
-function playSeries(arr){
+function playSeries(){
   Tone.Transport.stop();
   Tone.Master.volume.rampTo(0, 0.1);
   Tone.Transport.start('+0.1');
@@ -24,7 +24,8 @@ function clearSeries(){
   arrayPlay.removeAll();
 }
 
-function initializeSeries(arr){
+function initializeSeries(data){
+  var arr = ripY(data);
   var toneArr = scaleArray(arr);
 
   arrayPlay = new Tone.Sequence(function(time, note){
@@ -52,6 +53,14 @@ function scaleArray(arr){
 $(function(){
   Tone.Master.volume.rampTo(-Infinity, 0.05);
 });
+
+function ripY(data){
+  var a = [];
+  for(let i = 0; i<data.length; i++){
+    a.push(data[i].value);
+  }
+  return a;
+}
 
 // CHANGE SOUND FUNCTIONS ====================================================
 
