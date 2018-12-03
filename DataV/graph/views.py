@@ -26,7 +26,7 @@ class DataDetailView(DetailView):
 
 class DataCreateView(LoginRequiredMixin, CreateView):
     model = dataO
-    fields = ['title','content']
+    fields = ['title','xaxis','yaxis']
 
     def form_valid(self,form):
         form.instance.author = self.request.user

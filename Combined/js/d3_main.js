@@ -62,20 +62,30 @@ function parse() {
 	line_chart(data, name);
 	initializeSeries(yData);
 	playSeries(yData);
+	replaceInput();
 }
 
 
+function replaceInput() {
+	var inputButton = document.getElementById("submit");
+	inputButton.remove();
+
+	var button = d3.select(".lineButtons");
+	button.append("input")
+		.attr("name", "updateButton")
+		.attr("type", "button")
+		.attr("value", "Update")
+		.attr("onclick", "newParse()")
+}
+
 // Updatas the values in the line graph
-function updateInput(data) {
-	var x = d3.scaleLinear().rangeRound([0, width]);
-	var y = d3.scaleLinear().rangeRound([height, 0]);
-
+function updateInput() {
 	var line = d3.line()
-		.x(function (d) { return x(data.indexOf(d)) })
-		.y(function (d) { return y(d) });
+		.x(function (d) { return x(d.index) })
+		.y(function (d) { return y(d.value) });
 
-	x.domain(d3.extent(data, function (d) { return data.indexOf(d) }));
-	y.domain(d3.extent(data, function (d) { return d }));
+	x.domain(d3.extent(data, function (d) { return d.index }));
+	y.domain([0, d3.max(data, function (d) { return d.value })]);
 
 	var svg = d3.select("body").transition();
 
@@ -104,18 +114,36 @@ function newParse() {
 		.replace(/\s\s+/g, " ")
 		.replace(/\s\B/g, "")
 		.split(" ");
+	var name = document.getElementById("name").value;
 
-	if (xData.length == yData.length || xData.length == 0) {
-		for (var i = 0; i < xData.length; i++) {
+	data = [];
+	if (xData.length == yData.length) {
+		xData.length = yData.length;
+		for (var i = 0; i < yData.length; i++) {
 			xData[i] = parseFloat(xData[i]);
 			yData[i] = parseFloat(yData[i]);
 		}
+	} else if (xData.length == 1) {
+		for (var i = 0; i < yData.length; i++) {
+			xData[i] = parseFloat(i);
+			yData[i] = parseFloat(yData[i]);
+		}
+	} else { return }
 
-		updateInput(xData, yData);
-		clearSeries();
-		initializeSeries(yData);
-		playSeries(yData);
+	for (var i = 0; i < yData.length; i++) {
+		data.push(
+			{
+				index: xData[i],
+				value: yData[i]
+			});
 	}
+	data.sort(function (a, b) { return a.index - b.index });
+
+	updateInput();
+	clearSeries();
+	clearPoints();
+	initializeSeries(yData);
+	playSeries(yData);
 }
 
 // Creates a line graph
@@ -286,4 +314,13 @@ function plotSearchPoint(xValue, yValue) {
 		.attr("cy", function (d) { return y(d.value) })
 		.attr("transform", "translate(" + margin.left + ","
 			+ margin.top + ")");
+}
+
+function clearPoints() {
+	var points = document.getElementsByClassName("dot");
+	var dot;
+	for (var i = 0; i < points.length; i++) {
+		dot = points[i];
+		dot.remove();
+	}
 }

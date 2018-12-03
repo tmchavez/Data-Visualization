@@ -5,7 +5,8 @@ from django.urls import reverse
 # Create your models here.
 class dataO(models.Model):
     title = models.CharField(max_length = 100)
-    content = models.TextField()
+    xaxis = models.TextField()
+    yaxis = models.TextField(default = "")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

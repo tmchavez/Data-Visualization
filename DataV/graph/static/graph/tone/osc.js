@@ -26,6 +26,10 @@ function playSeries(arr){
   console.log("playing");
 }
 
+function playNote(){
+    bellTone.triggerAttack();
+}
+
 function clearSeries(){
   arrayPlay.removeAll();
 }

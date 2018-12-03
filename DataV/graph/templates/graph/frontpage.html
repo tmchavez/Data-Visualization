@@ -2,28 +2,39 @@
 {% load static %}
 {%block content %}
 <center><h1>Enter Data Points</h1></center>
-    {% for data1 in datasets %}
-			<div>
-        {% if data1.author == user %}
-          {{data1.title}}:  {{data1.id}} <br>
-          {{data1.content}} <br>
-          <a href = "/graph/data/{{data1.id}}/"> Visualize this Data </a> --X--
-          <a href = "/graph/data/{{data1.id}}/delete"> Delete This Data</a> <br>
-        {% endif %}
-			</div>
-		{% endfor %}
+
 		<p>
 		<center><input id="value" placeholder="value"></center>
 		</p>
 		<center>
-	
+
 		<div id="inputs" class="clearfix">
     		<input type="file" id="files" name="files[]" multiple />
-		
+
  		</div>
-	
+
     <a href = "{% url 'graph-result'%}"> results </a>
 		</center>
+
+      <table class= "table table-hover">
+      {% for data1 in datasets %}
+  			<div>
+
+          {% if data1.author == user %}
+            <tr>
+            <!-- {{data1.title}}:  {{data1.id}} <br>
+            Xaxis - {{data1.xaxis}} <br>
+            Yaxis - {{data1.yaxis}} <br> -->
+            <th>{{data1.title}}</th>
+            <th><a href = "/graph/data/{{data1.id}}/">Visualize</a></th>
+            <th><a href = "/graph/data/{{data1.id}}/delete">Delete</a></th>
+            </tr>
+          {% endif %}
+
+  			</div>
+  		{% endfor %}
+      <table>
+
 
 
 {% endblock content %}
