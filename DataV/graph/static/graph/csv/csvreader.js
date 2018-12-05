@@ -45,7 +45,7 @@ function handleFileSelect(evt) {
             if(xheader!=""){
             xheader = parseInt(xheader);
                   xData= "" + data[xheader][0];
-                  for(int i=1;i<data[xheader].length;i++){
+                  for(var i=1;i<data[xheader].length;i++){
                         xData+=" "+data[xheader][i];
                   }  
             }
@@ -53,7 +53,7 @@ function handleFileSelect(evt) {
             if(yheader!=""){
             yheader = parseInt(yheader);
                   yData= "" + data[yheader][0];
-                  for(int i=1;i<data[yheader].length;i++){
+                  for(var i=1;i<data[yheader].length;i++){
                         yData+=" "+data[yheader][i];
                   }  
             }
