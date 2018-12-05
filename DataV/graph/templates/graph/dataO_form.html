@@ -13,7 +13,7 @@
         <script src="{% static 'graph/csv/jquery.csv.js' %}"> </script>
          <script src="{% static 'graph/csv/csvreader.js' %}"> </script>
          <input type="file" id="files" name="files[]" multiple />
-         <input type="button" value="Load File" onclick="csvparse()">
+         <button onclick="csvparse()">Load File</button>
         {{form.as_p }}
       </fieldset>
       <div>
